@@ -1,24 +1,148 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column                     | Type     | Options                   |
+| -------------------------- | -------- | ------------------------- |
+| nickname                   | string   | null: false               |
+| email                      | string   | null: false, unique: true |
+| encrypted_password         | string   | null: false               |
+| birth_date                 | date     | null: false               |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :items
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
 
-* Database initialization
+### Association
 
-* How to run the test suite
+- belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+## hokkaido テーブル
 
-* Deployment instructions
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
 
-* ...
+
+### Association
+
+belongs_to :user
+
+## tohoku テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## kanto テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## tyubu テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## kinki テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## tyugoku テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## shikoku テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
+
+## kyushu_okinawa テーブル
+
+| Column           | Type       | Options                         |
+| ---------------- | ---------- | ------------------------------- |
+| title            | string     | null: false                     |
+| explanation      | text       | null: false                     |
+| color_id         | integer    |                                 |
+| prefecture_id    | integer    |                                 |
+| user             | references | null: false, foreign_key: true  |
+
+
+### Association
+
+belongs_to :user
