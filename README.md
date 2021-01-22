@@ -20,7 +20,7 @@
 | title            | string     | null: false                     |
 | explanation      | text       | null: false                     |
 | color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
+| prefecture_id    | integer    | null: false                     |
 | user             | references | null: false, foreign_key: true  |
 
 ### Association
