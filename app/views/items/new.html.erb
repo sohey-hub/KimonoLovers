@@ -9,18 +9,11 @@
    </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">地方選択</label>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>--お求めになった地域を選択してください--</option>
-      <option>北海道</option>
-      <option>東北</option>
-      <option>関東</option>
-      <option>中部</option>
-      <option>近畿</option>
-      <option>中国</option>
-      <option>四国</option>
-      <option>九州</option>
-      <option>沖縄</option>
-    </select>
+    <%= f.collection_select(:region_id, Region.all, :id, :name, {}, {class:"form-control"}) %>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">種類選択</label>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-control"}) %>
   </div>
   <div class="form-group">
     <label for="exampleFormControlSelect1">色選択</label>
