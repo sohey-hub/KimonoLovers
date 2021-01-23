@@ -1,18 +1,16 @@
-<span class="border border-primary">
+<div class="container">
 <div id="map-container"></div>
-</span>
-
+</div>
 <div class="d-flex bd-highlight">
  
 <% @items.each do |item| %>
- <div class="p-2 flex-fill bd-highlight">
-    <div class="card">
+ <div class="card" style="width: 18rem;">
         <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"200", height:"200"), item_path(item.id), method: :get %>
       <div class="card-body">
-        <h5 class="card-title"><%= item.title %></h5>
-        <p class="card-text"><%= item.explanation %></p>
+        <h5 class="card-title">お名前：<%= item.title %></h5>
+        <p class="card-text">地方名：<%= item.region.name %></p>
+        <p class="card-text">種類：<%= item.genre.name %></p>
       </div>
     </div>
-  </div>
 <% end %>
 </div>

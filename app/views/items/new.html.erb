@@ -12,6 +12,10 @@
     <%= f.collection_select(:region_id, Region.all, :id, :name, {}, {class:"form-control"}) %>
   </div>
   <div class="form-group">
+    <label for="exampleFormControlSelect1">種類選択</label>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-control"}) %>
+  </div>
+  <div class="form-group">
     <label for="exampleFormControlSelect1">色選択</label>
     <select class="form-control" id="exampleFormControlSelect1">
       <option>--お着物の色を選択してください--</option>
