@@ -1,0 +1,40 @@
+ <%= form_with(model: @item, local: true) do |f| %>
+　　<div class="form-group">
+    <label for="exampleFormControlFile1">お着物のお写真</label>
+    <%= f.file_field :image, id:"exampleFormControlFile1" %>
+  </div>
+  <label for="exampleFormControlInput1">お着物の名前</label>
+  <div class="form-group">
+    <%= f.text_field :title, class:"form-control", id:"exampleFormControlInput1", placeholder:"例）本場奄美大島で泥染めをした大島紬" %>
+   </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">地方選択</label>
+    <%= f.collection_select(:region_id, Region.all, :id, :name, {}, {class:"form-control"}) %>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">種類選択</label>
+    <%= f.collection_select(:genre_id, Genre.all, :id, :name, {}, {class:"form-control"}) %>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlSelect1">色選択</label>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>--お着物の色を選択してください--</option>
+      <option>赤色</option>
+      <option>オレンジ色</option>
+      <option>黄色</option>
+      <option>黄緑色</option>
+      <option>緑色</option>
+      <option>青色</option>
+      <option>紫色</option>
+      <option>黒色</option>
+      <option>その他</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">説明文</label>
+    <%= f.text_area :explanation, class:"form-control", id:"exampleFormControlTextarea1", rows:"3", maxlength:"1000" %>
+  </div>
+
+      <%= f.submit "出品し直す" ,class:"btn btn-primary btn-lg btn-block" %>
+      <%= link_to 'もどる', root_path, class:"btn btn-secondary btn-lg btn-block" %>
+<% end %>
