@@ -1,0 +1,23 @@
+<div class="text-center">
+
+  <h1>アイテム詳細</h1>
+
+  <div class="card-text"><h2><%= @item.title %></h2></div>
+  <div class="card-body">
+    <%= image_tag(@item.image, class:"rounded mx-auto d-block", width:"500", height:"500") %>
+    <p class="card-text"><h2>持ち主：<%= @item.user.nickname %></h2></p>
+    <p class="card-text"><h2>種類：<%= @item.genre.name %></h2></p>
+    <p class="card-text"><h2>地方：<%= @item.region.name %></h2></p>
+    <p class="card-text"><h2>詳細：<%= @item.explanation %></h2></p>
+  </div>
+
+
+  <% if  user_signed_in? %>
+    <% if current_user.id == @item.user_id %>
+      <%= link_to '編集される方はこちらを押してください', edit_item_path(@item.id), class: "btn btn-primary btn-lg btn-block" %>
+      <h2 class=>or</h2>
+      <%= link_to '削除される方はこちらを押してください', item_path(@item.id), method: :delete, class:'item-destroy', class: "btn btn-secondary btn-lg btn-block" %>
+    <% end %>
+  <% end %>
+
+</div>
