@@ -1,0 +1,2 @@
+module TyugokusHelper
+end

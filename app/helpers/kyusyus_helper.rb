@@ -1,0 +1,2 @@
+module KyusyusHelper
+end
