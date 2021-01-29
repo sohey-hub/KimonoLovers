@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'messages/new'
   get 'okinawas/index'
   get 'kyusyus/index'
   get 'sikokus/index'
@@ -6,7 +7,9 @@ Rails.application.routes.draw do
   get 'kinkis/index'
   devise_for :users
   root to: 'items#index'
-  resources :items
+  resources :items do
+    resources :messages
+  end
   resources :kantos
   resources :hokkaidos
   resources :touhokus

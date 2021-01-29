@@ -6,6 +6,7 @@ class ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @message = Message.new
   end
 
   def create
@@ -15,10 +16,17 @@ class ItemsController < ApplicationController
     else
       render :new
     end
+   
+    @message = Message.new(text: params[:message][:text])
+    if @message.save
+      ActionCable.server.broadcast 'message_channel', content: @message
+    end
   end
 
+  
   def show
     @item = Item.find(params[:id])
+    @messages = Message.all
   end
 
   def edit
