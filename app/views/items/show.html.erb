@@ -19,5 +19,28 @@
       <%= link_to '削除される方はこちらを押してください', item_path(@item.id), method: :delete, class:'item-destroy', class: "btn btn-secondary btn-lg btn-block" %>
     <% end %>
   <% end %>
+</div>
 
+
+<div class="text-right m-4">
+    <% if user_signed_in? %>
+      <%= form_with(model: [@item, @comment], local: true) do |form| %>
+        <%= form.text_area :text, class:"form-control", id:"exampleFormControlTextarea1", placeholder: "コメントを入力", rows: "1" %>
+        <h6></h6>
+        <div class="text-left"><%= form.submit "コメント", class:"btn btn-primary btn-lg btn-block" %></div>
+      <% end %>
+    <% else %>
+      <strong><p>※※※ コメントの投稿には新規登録/ログインが必要です ※※※</p></strong>
+    <% end %>
+
+  <h2 class="text-center">---コメント一覧---</h2>
+
+    <div class="form-group">
+      <% @comments.each do |comment| %>
+        <strong><label for="exampleInputEmail1"><%= comment.user.nickname %></label></strong>
+        <small id="emailHelp" class="form-text text-muted"><%= comment.created_at %></small>
+        <h6><%= comment.text %></h6>
+        <p></p>
+      <% end %>
+      </div>
 </div>

@@ -17,8 +17,11 @@ class ItemsController < ApplicationController
     end
   end
 
+  
   def show
     @item = Item.find(params[:id])
+    @comment = Comment.new
+    @comments = @item.comments.includes(:user).order("created_at DESC")
   end
 
   def edit
