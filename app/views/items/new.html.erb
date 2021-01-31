@@ -1,6 +1,8 @@
+ <div class="text-left m-5">
  <%= form_with(model: @item, local: true) do |f| %>
 　　<div class="form-group">
-    <label for="exampleFormControlFile1">お着物のお写真</label>
+    <label for="exampleFormControlFile1">お着物の写真を下の「ファイルを選択」ボタンからお選びください</label>
+    <h6> </h6>
     <%= f.file_field :image, id:"exampleFormControlFile1" %>
   </div>
   <label for="exampleFormControlInput1">お着物の名前</label>
@@ -38,3 +40,4 @@
       <%= f.submit "出品する" ,class:"btn btn-primary btn-lg btn-block" %>
       <%= link_to 'もどる', root_path, class:"btn btn-secondary btn-lg btn-block" %>
 <% end %>
+</div>
