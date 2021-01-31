@@ -1,22 +1,106 @@
-<div class="text-center">
-<div id="map-container"></div>
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card bg-white text-black">
+        <%= image_tag "https://vasara-h.co.jp/.file/public/2018/12/21/e3a84a42963b6914b20312ee2060a45e/pixta_25013777_M.jpg", class:"bd-placeholder-img card-img-top", height:"700" %>
+        <div class="card-img-overlay">
+          <h1 class="card-title">KimonoLoversとは？</h1>
+          <h4 class="card-text">全国の着物好きな皆さんの交流の場になることを目的としたサービスです。</h4>
+          <p class="card-text">近年、着物業界は、「後継者不足」が叫ばれています。</p>
+          <p class="card-text">職人さん達の平均年齢はどんどん上がっており、</p>
+          <p class="card-text">廃業を余儀なくされている方もいらっしゃいます。</p>
+          <p class="card-text">しかし、「後継者」とは、必ずしも「作り手」だけではなく、「使い手」もまた後継者の一人です。</p>
+          <p class="card-text">日本には今でも職人さん達が命を削って、創作されたお着物が日々、生まれています。</p>
+          <p class="card-text">そうしたお着物に恋をした皆様が、思い入れのあるお着物を出品していただくことで、</p>
+          <p class="card-text">素敵な作品がより多くの方の目に留まることを願っています。</p>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card bg-white text-black">
+        <%= image_tag "https://happy-photo-studio.jp/upload/data/images/7edd0c2f3942e6ece62a25a4af61ed4f1562067958.JPG", class:"bd-placeholder-img card-img-top", width: "800", height:"700" %>
+        <div class="card-img-overlay">
+          <h1 class="card-title">お持ちのお着物を出品してみませんか？</h1>
+          <h2 class="card-text">出品方法は簡単３STEP！</h2>
+          <p class="card-text">STEP１：右上から「ログイン」、もしくは「新規登録」をしましょう。</p>
+          <p class="card-text">STEP２：右上の「出品する」ボタンをクリック！</p>
+          <p class="card-text">STEP３：上から順番に入力し、「出品する」ボタンを押して終了です！</p>
+          <p class="card-text">出品すると、全国の皆様から、コメントをいただけます！</p>
+          <h4 class="card-text">さあ、いますぐ出品してみませんか？</h4>
+        </div>
+      </div>
+    </div>
+  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+ </div>
 </div>
 
 <div class="text-center">
-<h2>NEW ARRIVAL</h2>
+<p class="font-weight-bold">
+  <h1>地図をクリックして、地方ごとのお着物を見に行きませんか？</h1>
+</p>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-auto">
+      <nav class="nav flex-column">
+        <p class="nav-link active">エリア名</p>
+        <a class="nav-link" href="http://localhost:3000/hokkaidos">北海道</a>
+        <a class="nav-link" href="http://localhost:3000/touhokus">東北</a>
+        <a class="nav-link" href="http://localhost:3000/kantos">関東</a>
+        <a class="nav-link" href="http://localhost:3000/tyubus">中部</a>
+        <a class="nav-link" href="http://localhost:3000/kinkis">近畿</a>
+        <a class="nav-link" href="http://localhost:3000/sikokus">中国</a>
+        <a class="nav-link" href="http://localhost:3000/sikokus">四国</a>
+        <a class="nav-link" href="http://localhost:3000/kyusyus">九州</a>
+        <a class="nav-link" href="http://localhost:3000/okinawas">沖縄</a>
+      </nav>
+    </div>
+
+    <div class="col">
+      <div id="map-container"></div>
+    </div>
+
+    <div class="col-md-auto">
+      <nav class="nav flex-column">
+        <p class="nav-link active">カテゴリー別</p>
+        <a class="nav-link" href="http://localhost:3000/hokkaidos">留袖</a>
+        <a class="nav-link" href="http://localhost:3000/touhokus">色留袖</a>
+        <a class="nav-link" href="http://localhost:3000/kantos">付下</a>
+        <a class="nav-link" href="http://localhost:3000/tyubus">色無地</a>
+        <a class="nav-link" href="http://localhost:3000/kinkis">小紋</a>
+        <a class="nav-link" href="http://localhost:3000/sikokus">紬</a>
+        <a class="nav-link" href="http://localhost:3000/sikokus">浴衣</a>
+        <a class="nav-link" href="http://localhost:3000/kyusyus">その他</a>
+      </nav>
+    </div>
+  </div>
+</div>
+
+<div class="text-center">
+<h1>NEW ARRIVAL</h1>
 </div>
 
 <div class="container">
   <div class="row row-cols-4">
 <% @items.each do |item| %>
+<div class="card-deck">
  <div class="card">
         <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"300", height:"300"), item_path(item.id), method: :get %>
       <div class="card-body">
         <h5 class="card-title">お名前：<%= item.title %></h5>
-        <p class="card-text">地方名：<%= item.region.name %></p>
-        <p class="card-text">種類：<%= item.genre.name %></p>
-        <p class="card-text">投稿日：<%= item.created_at %></p>
+        <h6 class="card-text">地方名：<%= item.region.name %></h6>
+        <h6 class="card-text">カテゴリ：<%= item.genre.name %></h6>
+        <h6 class="card-text">投稿日：<%= item.created_at %></h6>
       </div>
+  </div>
   </div>
 <% end %>
  </div>
