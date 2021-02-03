@@ -9,7 +9,7 @@ KimonoLovers
 
 # DEMO
 トップページ
-![トップページ(unnamed.jpg)
+![トップページ](unnamed.jpg)
 
 # テーブル設計
 
