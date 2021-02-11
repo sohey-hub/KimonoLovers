@@ -89,11 +89,11 @@
 </div>
 
 <div class="container">
-  <div class="row row-cols-4">
+  <div class="row row-cols-5">
 <% @items.each do |item| %>
 <div class="card-deck">
  <div class="card">
-        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"300", height:"300"), item_path(item.id), method: :get %>
+        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"250", height:"230"), item_path(item.id), method: :get %>
       <div class="card-body">
         <h5 class="card-title">お名前：<%= item.title %></h5>
         <h6 class="card-text">地方名：<%= item.region.name %></h6>
