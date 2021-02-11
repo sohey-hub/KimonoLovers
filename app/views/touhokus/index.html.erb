@@ -1,18 +1,54 @@
 <div class="text-center">
+  <h1>北海道地方の着物情報</h1>
+</div>
+
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <%= image_tag "https://kogin.net/img/slide/slide2.jpg", height:"400", width:"870"  %>
+          </div>
+          <div class="col-4">
+            <div class="card-body">
+              <h5 class="card-title">津軽刺子（つがるさしこ）</h5>
+                <p class="card-text">刺子とは、布地に糸で幾何学模様等の図柄を刺繍して縫いこむこと。津軽刺子は青森県の津軽地方で行われている刺し子で、刺し子の技法のひとつ「こぎん刺し」が有名です。</p>
+                <p class="card-text"><small class="text-muted">江戸時代には刺子の技法が確立していたと言われています。津軽地方では、寒さが厳しく綿花の栽培に適さなかったことから、木綿は貴重なものでした。そのため、弘前藩により、農民は木綿着物の着用を禁止されていたので、麻の着物を着用することに…。麻の着物は保温性に乏しく擦り切れやすいため、それを保温・補強するために刺し子が発展していったそうです。</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="container">
+        <div class="row">
+          <div class="col-8">
+            <%= image_tag "https://pds.exblog.jp/pds/1/201709/07/03/b0172203_16052930.jpg", class:"bd-placeholder-img", height:"400", width:"870"  %>
+          </div>
+          <div class="col-4">
+            <div class="card-body">
+              <h5 class="card-title">置賜紬（おいたまつむぎ）</h5>
+                <p class="card-text">山形県米沢市、長井市、白鷹町を中心に生産されている織物の総称。「米沢紬」「長井紬」「米琉」「白鷹御召」「紅花紬」などがあります。</p>
+                <p class="card-text"><small class="text-muted">江戸時代に、米沢藩が奨励したことにより発展したと言われています。慶長年間(1596年～1615年)、米沢藩の初代藩主である上杉景勝の奨励により、産地としての体制が整いました。その後、米沢藩の第9代藩主であり、領地返上寸前とまでいわれていた藩の財政を建て直すきっかけを作ったと言われる上杉鷹山が、殖産興業の一環として本格的に奨励。越後や京都から織物職人を呼び、その技術を学ばせることにより、米沢藩の絹織物は飛躍的に発展していったそうです。各地域で伝承されてきたものが、1976年に置賜紬として伝統的工芸品の指定を受けることとなりました。現在、新製品の開発や後継者の育成などの取り組みが行われています。</small></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only"></span>
+  </a>
+</div>
+
+<div class="text-center">
 <h1>東北地方のお着物一覧</h1>
 </div>
 
-<div class="container">
-  <div class="row row-cols-5">
-<% @items.each do |item| %>
- <div class="card" style="width: 18rem;">
-        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"200", height:"200"), item_path(item.id), method: :get %>
-      <div class="card-body">
-        <h5 class="card-title">お名前：<%= item.title %></h5>
-        <p class="card-text">地方名：<%= item.region.name %></p>
-        <p class="card-text">種類：<%= item.genre.name %></p>
-      </div>
-  </div>
-<% end %>
-  </div>
-</div>
+<%= render "tempretes/kimono" %>
