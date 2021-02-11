@@ -50,17 +50,4 @@
 <h1>沖縄地方のお着物一覧</h1>
 </div>
 
-<div class="container">
-  <div class="row row-cols-5">
-<% @items.each do |item| %>
- <div class="card" style="width: 18rem;">
-        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"200", height:"200"), item_path(item.id), method: :get %>
-      <div class="card-body">
-        <h5 class="card-title">お名前：<%= item.title %></h5>
-        <p class="card-text">地方名：<%= item.region.name %></p>
-        <p class="card-text">種類：<%= item.genre.name %></p>
-      </div>
-  </div>
-<% end %>
-  </div>
-</div>
+<%= render "tempretes/kimono" %>
