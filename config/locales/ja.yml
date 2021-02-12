@@ -1,0 +1,11 @@
+ja:
+ activerecord:
+   attributes:
+     user:
+       nickname: ニックネーム
+     item:
+       image: 画像
+       title: お着物の名前
+       explanation: 説明文
+       region_id: お住まいの地方名
+       genre_id: お着物の種類

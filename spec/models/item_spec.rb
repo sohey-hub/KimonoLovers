@@ -16,29 +16,29 @@ RSpec.describe Item, type: :model do
       it "アイテム画像が空では登録できないこと" do
         @item.image = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Image can't be blank")
+        expect(@item.errors.full_messages).to include("画像を入力してください")
       end
       it "アイテム名が空では登録出来ないこと" do
         @item.title = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Title can't be blank")
+        expect(@item.errors.full_messages).to include("お着物の名前を入力してください")
        end
 
        it "アイテムの説明が空では登録出来ないこと" do
         @item.explanation = nil
         @item.valid?
-        expect(@item.errors.full_messages).to include("Explanation can't be blank")
+        expect(@item.errors.full_messages).to include("説明文を入力してください")
        end
        it "アイテムの地方名が'---'では登録出来ないこと" do
         @item.region_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Region must be other than 1")
+        expect(@item.errors.full_messages).to include("お住まいの地方名は1以外の値にしてください")
        end
 
        it "アイテムの種類が'---'では登録出来ないこと" do
         @item.genre_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Genre must be other than 1")
+        expect(@item.errors.full_messages).to include("お着物の種類は1以外の値にしてください")
        end
     end
   end
