@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root to: 'items#index'
   resources :items do
     resources :comments, only: :create
+    resources :likes, only: [:create, :destroy]
   end
   resources :kantos, only: :index
   resources :hokkaidos, only: :index
