@@ -1,6 +1,6 @@
 class Region < ActiveHash::Base
   self.data = [
-    { id: 1, name: '--お求めになった地域を選択してください--' },
+    { id: 1, name: '--お住まいの地域を選択してください--' },
     { id: 2, name: '北海道' },
     { id: 3, name: '東北' },
     { id: 4, name: '関東' },

@@ -102,6 +102,7 @@
         <h6 class="card-text">地方名：<%= item.region.name %></h6>
         <h6 class="card-text">カテゴリ：<%= item.genre.name %></h6>
         <h6 class="card-text">投稿日：<%= item.created_at %></h6>
+         (<%= item.liked_users.count %>)
       </div>
   </div>
   </div>
