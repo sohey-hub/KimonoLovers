@@ -4,71 +4,62 @@
     <title>KimonoLovers</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_pack_tag 'application' %>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript" src="https://blog.webcreativepark.net/sample/js/36/footerFixed.js"></script>
-
-    </head>
+  </head>
 
   <body>
-   <%= render "shared/header" %>
-  
+    <%= render "shared/header" %>
     <%= yield %>
-<script>
-   $(function(){
+    <script>
+      $(function(){
+        const areaLinks = {
+        1:"https://kimonolovers.herokuapp.com/hokkaidos",
+        2:"https://kimonolovers.herokuapp.com/touhokus",
+        3:"https://kimonolovers.herokuapp.com/kantos",
+        4:"https://kimonolovers.herokuapp.com/tyubus",
+        5:"https://kimonolovers.herokuapp.com/kinkis",
+        6:"https://kimonolovers.herokuapp.com/tyugokus",
+        7:"https://kimonolovers.herokuapp.com/sikokus",
+        8:"https://kimonolovers.herokuapp.com/kyusyus",
+        9:"https://kimonolovers.herokuapp.com/okinawas"
+        };
 
-    const areaLinks = {
-     1:"https://kimonolovers.herokuapp.com/hokkaidos",
-     2:"https://kimonolovers.herokuapp.com/touhokus",
-     3:"https://kimonolovers.herokuapp.com/kantos",
-     4:"https://kimonolovers.herokuapp.com/tyubus",
-     5:"https://kimonolovers.herokuapp.com/kinkis",
-     6:"https://kimonolovers.herokuapp.com/tyugokus",
-     7:"https://kimonolovers.herokuapp.com/sikokus",
-     8:"https://kimonolovers.herokuapp.com/kyusyus",
-     9:"https://kimonolovers.herokuapp.com/okinawas"
-      };
+        const areas = [
+          {code : 1, name: "北海道", color: "#000080", hoverColor: "#aaa", prefectures: [1]},
+          {code : 2, name: "東北",   color: "#0000ff", hoverColor: "#aaa", prefectures: [2,3,4,5,6,7]},
+          {code : 3, name: "関東",   color: "#7ecfea", hoverColor: "#b7e5f4", prefectures: [8,9,10,11,12,13,14]},
+          {code : 4, name: "中部",   color: "#7cdc92", hoverColor: "#aceebb", prefectures: [15,16,17,18,19,20,21,22,23]},
+          {code : 5, name: "近畿",   color: "#ffe966", hoverColor: "#fff19c", prefectures: [24,25,26,27,28,29,30]},
+          {code : 6, name: "中国",   color: "#008000", hoverColor: "#aaa", prefectures: [31,32,33,34,35]},
+          {code : 7, name: "四国",   color: "#ff88ff", hoverColor: "#aaa", prefectures: [36,37,38,39]},
+          {code : 8, name: "九州",   color: "#800080", hoverColor: "#aaa", prefectures: [40,41,42,43,44,45,46]},
+          {code : 9, name: "沖縄",   color: "#ff0000", hoverColor: "#aaa", prefectures: [47]},
+          ];
 
-
-      const areas = [
-                {code : 1, name: "北海道", color: "#000080", hoverColor: "#aaa", prefectures: [1]},
-                {code : 2, name: "東北",   color: "#0000ff", hoverColor: "#aaa", prefectures: [2,3,4,5,6,7]},
-                {code : 3, name: "関東",   color: "#7ecfea", hoverColor: "#b7e5f4", prefectures: [8,9,10,11,12,13,14]},
-                {code : 4, name: "中部",   color: "#7cdc92", hoverColor: "#aceebb", prefectures: [15,16,17,18,19,20,21,22,23]},
-                {code : 5, name: "近畿",   color: "#ffe966", hoverColor: "#fff19c", prefectures: [24,25,26,27,28,29,30]},
-                {code : 6, name: "中国",   color: "#008000", hoverColor: "#aaa", prefectures: [31,32,33,34,35]},
-                {code : 7, name: "四国",   color: "#ff88ff", hoverColor: "#aaa", prefectures: [36,37,38,39]},
-                {code : 8, name: "九州",   color: "#800080", hoverColor: "#aaa", prefectures: [40,41,42,43,44,45,46]},
-                {code : 9, name: "沖縄",   color: "#ff0000", hoverColor: "#aaa", prefectures: [47]},
-                ];
-  
-              $("#map-container").japanMap({
-		                width:800,
-                    areas  : areas,
-                    selection : "area",
-                    borderLineWidth: 0.25,
-                    drawsBoxLine : false,
-                    movesIslands : true,
-                    showsAreaName : true,
-                    font : "MS Mincho",
-                    fontSize : 13,
-		                fontColor :"#777",
-                    fontShadowColor : "white",
-                    onSelect : function(data){
-			               location.href = areaLinks[data.area.code];
-                    }
-            });
-
+          $("#map-container").japanMap({
+		        width:800,
+            areas  : areas,
+            selection : "area",
+            borderLineWidth: 0.25,
+            drawsBoxLine : false,
+            movesIslands : true,
+            showsAreaName : true,
+            font : "MS Mincho",
+            fontSize : 13,
+            fontColor :"#777",
+            fontShadowColor : "white",
+            onSelect : function(data){
+			      location.href = areaLinks[data.area.code];
+          }
         });
-
-</script>
-
-<footer id="footer">
-  <%= render "shared/footer" %>
-</footer>
-
+      });
+    </script>
+    <footer id="footer">
+      <%= render "shared/footer" %>
+    </footer>
   </body>
 </html>
