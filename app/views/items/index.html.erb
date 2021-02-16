@@ -96,16 +96,17 @@
 <div class="card-deck">
        
  <div class="card">
-  <h3 class="card-title"><%= item.title %></h3>
+  
         <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"250", height:"230"), item_path(item.id), method: :get %>
       <div class="card-body">
+      <h3 class="card-title"><%= item.title %></h3>
         <h6 class="card-text">地方名：<%= item.region.name %></h6>
         <h6 class="card-text">カテゴリ：<%= item.genre.name %></h6>
-        <h6 class="card-text">投稿日：<%= item.created_at %></h6>
-         (<%= item.liked_users.count %>)
+        <h5 class="card-text">👍<%= item.liked_users.count %></h5>
       </div>
   </div>
   </div>
 <% end %>
  </div>
 </div>
+
