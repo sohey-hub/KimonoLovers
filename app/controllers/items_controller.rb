@@ -1,4 +1,5 @@
 class ItemsController < ApplicationController
+  before_action :item_find, only: [:show, :edit, :update, :destroy]
   
   def index
     @items = Item.all.order("created_at DESC")
@@ -19,18 +20,15 @@ class ItemsController < ApplicationController
 
   
   def show
-    @item = Item.find(params[:id])
     @comment = Comment.new
     @comments = @item.comments.includes(:user).order("created_at DESC")
     @like = Like.new
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to item_path(@item.id), method: :get
     else
@@ -39,7 +37,6 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.user.id == current_user.id
       @item.destroy
       redirect_to root_path
@@ -52,6 +49,10 @@ class ItemsController < ApplicationController
 
   def item_params
     params.require(:item).permit(:title, :explanation, :region_id, :genre_id, :image).merge(user_id: current_user.id)
+  end
+
+  def item_find
+    @item = Item.find(params[:id])
   end
 
 end
