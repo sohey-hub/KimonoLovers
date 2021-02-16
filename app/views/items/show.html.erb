@@ -2,15 +2,22 @@
 
   <h1>アイテム詳細</h1>
 
-  <div class="card-text"><h2><%= @item.title %></h2></div>
-  <div class="card-body">
-    <%= image_tag(@item.image, class:"rounded mx-auto d-block", width:"500", height:"500") %>
-    <p class="card-text"><h2>持ち主：<%= @item.user.nickname %></h2></p>
-    <p class="card-text"><h2>種類：<%= @item.genre.name %></h2></p>
-    <p class="card-text"><h2>地方：<%= @item.region.name %></h2></p>
-    <p class="card-text"><h2>詳細：<%= @item.explanation %></h2></p>
+  <div class="card mb-5" style="max-width: 1000px;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <%= image_tag(@item.image, class:"rounded mx-auto d-block", width:"250", height:"250") %>
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <div class="card-title"><h2><%= @item.title %></h2></div>
+          <p class="card-text"><h2>持ち主：<%= @item.user.nickname %></h2></p>
+          <p class="card-text"><h2>種類：<%= @item.genre.name %></h2></p>
+          <p class="card-text"><h2>地方：<%= @item.region.name %></h2></p>
+          <p class="card-text"><small class="text_muted"><h3>詳細：<%= @item.explanation %></h3></small></p>
+        </div>
+      </div>
+    </div>
   </div>
-
 
   <% if  user_signed_in? %>
     <% if current_user.id == @item.user_id %>
@@ -19,14 +26,18 @@
       <%= link_to '削除される方はこちらを押してください', item_path(@item.id), method: :delete, class:'item-destroy', class: "btn btn-secondary btn-lg btn-block" %>
     <% end %>
   <% end %>
-</div>
 
-<h3>いいね件数: <%= @item.likes.count %></h3>
-<% if current_user.already_liked?(@item) %>
-  <%= button_to 'いいねを取り消す', item_like_path(@item), method: :delete %>
-<% else %>
-  <%= button_to 'いいね', item_likes_path(@item) %>
-<% end %>
+<h3>「良いね」件数: <%= @item.likes.count %></h3>
+  <% if user_signed_in? %>
+    <% if current_user.already_liked?(@item) %>
+      <%= button_to '「良いね」を取り消す', item_like_path(@item), method: :delete %>
+    <% else %>
+      <%= button_to '良いね！', item_likes_path(@item) %>
+    <% end %>
+  <% else %>
+    <strong><%= "※※※「良いね」ボタンを押すには、新規登録/ログインが必要です ※※※"%></strong>
+  <% end %>
+</div>
 
 <div class="text-right m-4">
     <% if user_signed_in? %>
@@ -40,13 +51,16 @@
     <% end %>
 
   <h2 class="text-center">---コメント一覧---</h2>
-
-    <div class="form-group">
-      <% @comments.each do |comment| %>
-        <strong><label for="exampleInputEmail1"><%= comment.user.nickname %></label></strong>
-        <small id="emailHelp" class="form-text text-muted"><%= comment.created_at %></small>
-        <h6><%= comment.text %></h6>
-        <p></p>
-      <% end %>
+    <% if @comments.present?%>
+      <div class="form-group">
+        <% @comments.each do |comment| %>
+          <strong><label for="exampleInputEmail1"><%= comment.user.nickname %></label></strong>
+          <small id="emailHelp" class="form-text text-muted"><%= comment.created_at %></small>
+          <h6><%= comment.text %></h6>
+          <p></p>
+        <% end %>
       </div>
+    <% else %>
+      <%= "コメントはまだありません。お時間がありましたら、ぜひコメントしましょう！" %>
+    <% end %>
 </div>
