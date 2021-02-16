@@ -2,7 +2,7 @@ class KantosController < ApplicationController
 
 
   def index
-    @items = Item.where(region_id: 4)
+    @items = Item.where(region_id: 4).order("created_at DESC")
     if @items.present?
       render :index
     else
