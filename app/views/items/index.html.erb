@@ -1,7 +1,7 @@
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <div class="card bg-white text-black">
+      <div class="card bg-white text-black border-white">
         <%= image_tag "https://vasara-h.co.jp/.file/public/2018/12/21/e3a84a42963b6914b20312ee2060a45e/pixta_25013777_M.jpg", class:"bd-placeholder-img card-img-top", height:"700" %>
         <div class="card-img-overlay">
           <h1 class="card-title">KimonoLoversとは？</h1>
@@ -17,7 +17,7 @@
       </div>
     </div>
     <div class="carousel-item">
-      <div class="card bg-white text-black">
+      <div class="card bg-white text-black border-white">
         <%= image_tag "https://happy-photo-studio.jp/upload/data/images/7edd0c2f3942e6ece62a25a4af61ed4f1562067958.JPG", class:"bd-placeholder-img card-img-top", width: "800", height:"700" %>
         <div class="card-img-overlay">
           <h1 class="card-title">お持ちのお着物を出品してみませんか？</h1>
@@ -30,15 +30,15 @@
         </div>
       </div>
     </div>
-  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only"></span>
-  </a>
- </div>
+   <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only"></span>
+    </a>
+  </div>
 </div>
 
 <div class="text-center">
@@ -89,24 +89,4 @@
 </div>
 
 
-
-<div class="container">
-  <div class="row row-cols-4">
-<% @items.each do |item| %>
-<div class="card-deck">
-       
- <div class="card">
-  
-        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"250", height:"230"), item_path(item.id), method: :get %>
-      <div class="card-body">
-      <h3 class="card-title"><%= item.title %></h3>
-        <h6 class="card-text">地方名：<%= item.region.name %></h6>
-        <h6 class="card-text">カテゴリ：<%= item.genre.name %></h6>
-        <h5 class="card-text">👍<%= item.liked_users.count %></h5>
-      </div>
-  </div>
-  </div>
-<% end %>
- </div>
-</div>
-
+<%= render "shared/kimono" %>

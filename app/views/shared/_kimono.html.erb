@@ -1,13 +1,15 @@
 <div class="container">
   <div class="row row-cols-5">
-<% @items.each do |item| %>
- <div class="card" style="width: 18rem;">
-        <%= link_to image_tag(item.image, class:"bd-placeholder-img card-img-top", width:"200", height:"200"), item_path(item.id), method: :get %>
-      <div class="card-body">
-        <h5 class="card-title">お名前：<%= item.title %></h5>
-        <p class="card-text">種類：<%= item.genre.name %></p>
+    <% @items.each do |item| %>
+      <div class="card-deck">
+        <div class="card border-white">
+          <%= link_to image_tag(item.image, class:"card-img", width:"250", height:"250"), item_path(item.id), method: :get %>
+          <div class="card-img-underlay">
+            <h4 class="card-title">👍<%= item.liked_users.count %></h4>
+            <h4 class="card-title">💬<%= item.comments.count %></h4>
+          </div>
+        </div>
       </div>
-  </div>
-<% end %>
+    <% end %>
   </div>
 </div>
