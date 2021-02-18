@@ -24,7 +24,7 @@ KimonoLovers
 
 ## お着物の出品ページ
 ![画像](https://user-images.githubusercontent.com/75017019/106718600-9b0c0e80-6644-11eb-81be-e1a01149444d.png)
-出品ページでは、画像と名前と地方選択と種類選択、説明文を必須にして、色は何色と断定できるお着物は意外と多くないので、任意にしました。
+出品ページでは、画像と名前と地方選択と種類選択、説明文を必須にしました。
 
 ## 新規登録とログイン画面のページ
 ![画像](https://user-images.githubusercontent.com/75017019/106718715-c2fb7200-6644-11eb-87cd-72b2de35770f.png)
@@ -32,10 +32,12 @@ KimonoLovers
 新規登録画面では、個人情報をたくさん求めてしまうと、女性（特に高齢者の女性達）は警戒してアカウントを作ってくれない可能性があったので、最低限の情報だけにしました。
 
 # 工夫したポイント
+
 * 新規登録画面では、個人情報をたくさん求めてしまうと、女性（特に高齢者の女性達）は警戒してアカウントを作ってくれない可能性があったので、最低限の情報だけにしました。
 * コメント欄で、その着物に対する感想を書いてもらい、自分の持っている着物に誇りを持ってもらうことで、ちょっと着てみようかな、と思ってもらえるきっかけになれば、と思い、コメント機能を実装しました。
 * 日本地図から地方ごとの着物を一覧で表示することで、地方ごとの特色が出て、面白がってもらえるのではないか、と思い、日本地図を導入しました。
-* 「👍」ボタンを実装して、気軽に評価してもらえる様にしました。
+* 着物は興味がないと言っている方でも母親から譲り受けたパターンが多いので、褒めてもらえれば嬉しくなって、着てもらえる可能性が上がったら良いな、と思い、「👍」ボタンを実装して、気軽に評価してもらえる様にしました。
+* お着物の詳細ページでは、余計な情報や色を無くして、着物だけに集中してもらえる様にシンプルなデザインにしました。
 
 # 使用技術（開発環境）
 
@@ -67,12 +69,13 @@ VSCode
 | nickname                   | string   | null: false               |
 | email                      | string   | null: false, unique: true |
 | encrypted_password         | string   | null: false               |
-| birth_date                 | date     | null: false               |
 
 ### Association
 
 - has_many :items
 - has_many :comments
+- has_many :likes, dependent: :destroy
+- has_many :liked_posts, through: :likes, source: :item
 
 ## items テーブル
 
@@ -80,8 +83,8 @@ VSCode
 | ---------------- | ---------- | ------------------------------- |
 | title            | string     | null: false                     |
 | explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    | null: false                     |
+| genre_id         | integer    | null: false                     |
+| region_id        | integer    | null: false                     |
 | user             | references | null: false, foreign_key: true  |
 
 ### Association
@@ -91,129 +94,30 @@ VSCode
 - has_many :comments
 - belongs_to_active_hash :region
 - belongs_to_active_hash :genre
+- has_many :likes, dependent: :destroy
+- has_many :liked_users, through: :likes, source: :user
 
-## comment テーブル
+## comments テーブル
 
-| Column                     | Type     | Options                   |
-| -------------------------- | -------- | ------------------------- |
-| text                       | text     | null: false               |
-
-## hokkaido テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| text   | text       | null: false                   |
+| user   | references | null:false, foreign_key: true |
+| item   | references | null:false, foreign_key: true |
 
 ### Association
 
-belongs_to :user
+- belongs_to :user
+- belongs_to :item
 
-## tohoku テーブル
+## likes テーブル
 
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
+| Column | Type       | Options                       |
+| ------ | ---------- | ----------------------------- |
+| user   | references | null:false, foreign_key: true |
+| item   | references | null:false, foreign_key: true |
 
 ### Association
 
-belongs_to :user
-
-## kanto テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
-
-## tyubu テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
-
-## kinki テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
-
-## tyugoku テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
-
-## shikoku テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
-
-## kyushu_okinawa テーブル
-
-| Column           | Type       | Options                         |
-| ---------------- | ---------- | ------------------------------- |
-| title            | string     | null: false                     |
-| explanation      | text       | null: false                     |
-| color_id         | integer    |                                 |
-| prefecture_id    | integer    |                                 |
-| user             | references | null: false, foreign_key: true  |
-
-
-### Association
-
-belongs_to :user
+- belongs_to :item
+- belongs_to :user
