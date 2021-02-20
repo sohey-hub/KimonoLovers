@@ -41,6 +41,7 @@
   </div>
 </div>
 
+<%# 日本地図 %>
 <div class="text-center">
 <p class="font-weight-bold">
   <h1>地図をクリックして、地方ごとのお着物を見に行きませんか？</h1>
@@ -83,10 +84,30 @@
     </div>
   </div>
 </div>
+<%# /日本地図 %>
 
+<div class="text-center">
+  <h1>いいねランキング</h1>
+</div>
+<div class="container">
+  <div class="row row-cols-3 mx-5">
+    <% @all_ranks.each.with_index(1) do |item, i| %>
+      <div class="card-deck">
+        <div class="card border-white">
+          <%= link_to image_tag(item.image, class:"card-img", width:"250", height:"250"), item_path(item.id), method: :get %>
+          <div class="card-img-underlay">
+            <h4 class="card-title">第<%= i %>位</h4>
+            <h4 class="card-title">👍<%= item.liked_users.count %></h4>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<%# 着物一覧 %>
 <div class="text-center">
 <h1>NEW ARRIVAL</h1>
 </div>
-
-
 <%= render "shared/kimono" %>
+<%# /着物一覧 %>
