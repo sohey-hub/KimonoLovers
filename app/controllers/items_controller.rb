@@ -3,6 +3,7 @@ class ItemsController < ApplicationController
   
   def index
     @items = Item.all.order("created_at DESC")
+    @all_ranks = Item.find(Like.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def new
