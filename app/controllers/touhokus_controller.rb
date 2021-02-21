@@ -1,12 +1,7 @@
 class TouhokusController < ApplicationController
   
   def index
-    @items = Item.where(region_id: 3)
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(region_id: 3).order("created_at DESC")
   end
 
   private

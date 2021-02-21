@@ -1,11 +1,6 @@
 class OkinawasController < ApplicationController
   def index
-    @items = Item.where(region_id: 10)
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(region_id: 10).order("created_at DESC")
   end
 
   private
