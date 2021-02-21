@@ -1,11 +1,6 @@
 class HokkaidosController < ApplicationController
   def index
-    @items = Item.where(region_id: 2)
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(region_id: 2).order("created_at DESC")
   end
 
   private
