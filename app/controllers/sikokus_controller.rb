@@ -1,11 +1,6 @@
 class SikokusController < ApplicationController
   def index
-    @items = Item.where(region_id: 8)
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(region_id: 8).order("created_at DESC")
   end
 
   private

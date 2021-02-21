@@ -1,11 +1,6 @@
 class TyugokusController < ApplicationController
   def index
-    @items = Item.where(region_id: 7)
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
+    @items = Item.where(region_id: 7).order("created_at DESC")
   end
 
   private
