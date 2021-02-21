@@ -51,4 +51,9 @@
 <h1>中部地方のお着物一覧</h1>
 </div>
 
-<%= render "shared/kimono" %>
+<% if @items.present?%>
+  <%= render "shared/kimono" %>
+<% else %>
+  <%= "中部地方のお着物はまだ出品されていません。" %>
+  <%= "良かったら、お家に眠っているお着物を出品してみませんか？" %>
+<% end %>
