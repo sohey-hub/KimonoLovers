@@ -3,11 +3,6 @@ class KantosController < ApplicationController
 
   def index
     @items = Item.where(region_id: 4).order("created_at DESC")
-    if @items.present?
-      render :index
-    else
-      redirect_to root_path
-    end
   end
 
   private
