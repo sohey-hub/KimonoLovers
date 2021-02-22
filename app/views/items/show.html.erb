@@ -20,7 +20,7 @@
       <p class="card-text"><strong>詳細：</strong><%= @item.explanation %></p>
     </div>
     <ul class="list-group list-group-flush">
-      <li class="list-group-item"><strong>持ち主：</strong><%= @item.user.nickname %>さん(<%= @item.region.name %>住み)</li>
+      <li class="list-group-item"><strong>持ち主：</strong><%= link_to "#{@item.user.nickname}", user_path(current_user) %>さん(<%= @item.region.name %>住み)</li>
       <li class="list-group-item"><strong>種類：</strong><%= @item.genre.name %></li>
     </ul>
 
@@ -62,6 +62,8 @@
         <% end %>
       </div>
     <% else %>
-      <%= "コメントはまだありません。お時間がありましたら、ぜひコメントしましょう！" %>
+      <div class="text-right mt-4">
+        <%= "コメントはまだありません。お時間がありましたら、ぜひコメントしましょう！" %>
+      </div>
     <% end %>
 </div>

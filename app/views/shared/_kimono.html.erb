@@ -1,10 +1,11 @@
 <div class="container">
-  <div class="row row-cols-5">
+  <div class="row row-cols-4">
     <% @items.each do |item| %>
       <div class="card-deck">
-        <div class="card border-white">
+        <div class="card border-white mx-3 mt-3">
           <%= link_to image_tag(item.image, class:"card-img", width:"250", height:"250"), item_path(item.id), method: :get %>
           <div class="card-img-underlay">
+            <h4 class="card-title"><%= item.title %></h4>
             <h4 class="card-title">👍<%= item.liked_users.count %></h4>
             <h4 class="card-title">💬<%= item.comments.count %></h4>
           </div>
