@@ -1,5 +1,5 @@
-<div class="text-center">
-  <h1>九州地方の着物情報</h1>
+<div class="text-center m-5">
+  <h4>九州地方の着物情報</h4>
 </div>
 
 <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -46,13 +46,14 @@
     <span class="sr-only"></span>
   </a>
 </div>
-<div class="text-center">
-<h1>九州地方のお着物一覧</h1>
+<div class="text-center m-5">
+<h4>九州地方のお着物一覧</h4>
 </div>
 
 <% if @items.present?%>
   <%= render "shared/kimono" %>
 <% else %>
-  <%= "九州地方のお着物はまだ出品されていません。" %>
-  <%= "良かったら、お家に眠っているお着物を出品してみませんか？" %>
+  <div class="text-right mx-5">
+    <h4>九州地方のお着物はまだ出品されていません。良かったら、お家に眠っているお着物を出品してみませんか？</h4>
+  </div>
 <% end %>
