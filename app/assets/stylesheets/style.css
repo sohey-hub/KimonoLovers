@@ -5,3 +5,25 @@
 .flex{
   display: flex;
 }
+
+.top-title{
+  color: aliceblue;
+  margin-left: 550px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.footer{
+  background-color: #1cb6f3;
+}
+
+.navbar-brand{
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.col{
+  border-radius: 10%;
+}
+
+.top-item{
+  background-color: #EEEEEE;
+}
