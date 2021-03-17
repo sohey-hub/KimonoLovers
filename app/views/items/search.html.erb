@@ -1,0 +1,27 @@
+<div class="text-center">
+<h1>検索結果</h1>
+</div>
+<%# 検索結果の個数で条件分岐 %>
+<% if @results.length !=0 %>
+ 
+  <div class="container">
+  <div class="row row-cols-4">
+     <% @results.each do |result| %>
+      <div class="card-deck">
+        <div class="card border-white mx-3 mt-3">
+          <%= link_to image_tag(result.image, class:"card-img", width:"250", height:"250"), item_path(result.id), method: :get %>
+          <div class="card-img-underlay">
+            <h4 class="card-title"><%= result.title %></h4>
+            <h4 class="card-title">👍<%= result.liked_users.count %></h4>
+            <h4 class="card-title">💬<%= result.comments.count %></h4>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+<% else %>
+  該当する商品はありません
+<% end %>
+<br>
+<%= link_to 'トップページへ戻る', root_path,  class:"btn btn-primary btn-lg btn-block mx-5" %>
