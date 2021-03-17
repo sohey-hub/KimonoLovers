@@ -1,9 +1,11 @@
 class ItemsController < ApplicationController
   before_action :item_find, only: [:show, :edit, :update, :destroy]
-  
+  before_action :search_product, only: [:index, :search]
+
   def index
     @items = Item.all.order("created_at DESC")
     @all_ranks = Item.find(Like.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+    set_item_column
   end
 
   def new
@@ -46,6 +48,10 @@ class ItemsController < ApplicationController
     end
   end
 
+  def search
+    @results = @p.result.includes(:user)    
+  end
+
   private
 
   def item_params
@@ -55,5 +61,14 @@ class ItemsController < ApplicationController
   def item_find
     @item = Item.find(params[:id])
   end
+
+  def search_product
+    @p = Item.ransack(params[:q])
+  end
+
+  def set_item_column
+    @item_title = Item.select("title").distinct  # 重複なくnameカラムのデータを取り出す
+  end
+
 
 end
