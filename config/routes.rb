@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'sikokus/index'
   get 'tyugokus/index'
   get 'kinkis/index'
+  get 'items/search'
   devise_for :users
   root to: 'items#index'
   resources :items do
