@@ -63,3 +63,4 @@ gem 'pry-rails'
 gem 'active_hash'
 gem 'rails-i18n'
 gem "aws-sdk-s3", require: false
+gem 'ransack'
